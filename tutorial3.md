@@ -83,9 +83,10 @@ metadata:
   namespace: kube-system
 spec:
   containers:
+  - name: etcd
     image: k8s.gcr.io/etcd:3.2.24
     imagePullPolicy: IfNotPresent
-    name: etcd
+    
 ```
 
 This should look a little familiar: we've written a pod manifest before.
@@ -119,8 +120,8 @@ metadata:
   namespace: kube-system
 spec:
   containers:
+  - name: etcd
     image: k8s.gcr.io/etcd:3.2.24
-    name: etcd
   hostNetwork: true
 ```
 
@@ -152,8 +153,8 @@ metadata:
   namespace: kube-system
 spec:
   containers:
+  - name: etcd
     image: k8s.gcr.io/etcd:3.2.24
-    name: etcd
   hostNetwork: true
   volumes:
   - hostPath:
@@ -184,8 +185,8 @@ metadata:
   namespace: kube-system
 spec:
   containers:
+  - name: etcd
     image: k8s.gcr.io/etcd:3.2.24
-    name: etcd
   hostNetwork: true
   volumes:
   - hostPath:
@@ -213,8 +214,8 @@ metadata:
   namespace: kube-system
 spec:
   containers:
+  - name: etcd
     image: k8s.gcr.io/etcd:3.2.24
-    name: etcd
     volumeMounts:
     - mountPath: /var/lib/etcd
       name: etcd-data
@@ -344,8 +345,8 @@ metadata:
   namespace: kube-system
 spec:
   containers:
+  - name: etcd
     image: k8s.gcr.io/etcd:3.2.24
-    name: etcd
     command:
     - etcd
     - --name=k8s-demo
