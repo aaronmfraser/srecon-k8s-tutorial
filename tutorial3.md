@@ -358,20 +358,20 @@ spec:
     - --advertise-client-urls=https://localhost:2379
     - --data-dir=/var/lib/etcd
     volumeMounts:
-    - mountPath: /var/lib/etcd
-      name: etcd-data
-    - mountPath: /etc/kubernetes/pki/etcd
-      name: etcd-certs
+    - name: etcd-data
+      mountPath: /var/lib/etcd
+    - name: etcd-certs
+      mountPath: /etc/kubernetes/pki/etcd
   hostNetwork: true
   volumes:
-  - hostPath:
+  - name: etcd-data
+    hostPath:
       path: /var/lib/etcd
       type: DirectoryOrCreate
-    name: etcd-data
-  - hostPath:
+  - name: etcd-certs
+    hostPath:
       path: /etc/kubernetes/pki/etcd
       type: Directory
-    name: etcd-certs
 ```
 
 Now let's write it out and have `kubelet pick it up`.
